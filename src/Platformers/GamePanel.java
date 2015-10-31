@@ -21,6 +21,9 @@ public class GamePanel extends JPanel implements Runnable{
 	private int targetTime = 100/FPS;
 	
 	private TileMap tileMap;
+	private Player player;
+	
+	
 	
 	public GamePanel(){
 		super();
@@ -38,7 +41,7 @@ public class GamePanel extends JPanel implements Runnable{
 	}
 	@Override
 	public void run() {
-		
+		player= new Player(tileMap);
 		init();
 		long startTime;
 		long urdTime ,waitTime;
@@ -67,9 +70,11 @@ public class GamePanel extends JPanel implements Runnable{
 ////////////////////////////////////////////////////////////////
 	private void update(){
 		tileMap.update();
+		player.update();
 	}
 private void render(){
 		tileMap.draw(g);
+		player.draw(g);
 	}
 private void draw(){
 	Graphics g2=this.getGraphics();
